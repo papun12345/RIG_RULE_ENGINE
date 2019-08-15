@@ -10,20 +10,6 @@ import com.wipro.rtvs.Sonar;
 
 
 
-rule "SCM"
-
-when
-scm:Scm(commitCount>2)
-p:Team()
-then
-Achievements achievment=new Achievements();
-p.setPoints(p.getPoints()+10);
-achievment.setMetric("No. of commits per day");
-achievment.setReward(10);
-p.setAchievements(achievment);
-end;
-
-
 rule "Sonar"
 
 when
@@ -31,8 +17,8 @@ sonar:Sonar(Integer.parseInt(criticalViolations)<15)
 t:Team()
 then
 Achievements achievment=new Achievements();
-t.setPoints(t.getPoints()+5);
-achievment.setReward(5);
+t.setPoints(t.getPoints()+4);
+achievment.setReward(4);
 achievment.setMetric("Critical violations for code base");
 t.setAchievements(achievment);
 end;
@@ -49,6 +35,22 @@ Achievements achievment=new Achievements();
 p.setPoints(p.getPoints()+2);
 achievment.setMetric("Blocker Violations");
 achievment.setReward(2);
+p.setAchievements(achievment);
+end;
+
+
+
+
+rule "SCM"
+
+when
+scm:Scm(commitCount>2)
+p:Team()
+then
+Achievements achievment=new Achievements();
+p.setPoints(p.getPoints()+10);
+achievment.setMetric("No. of commits per day");
+achievment.setReward(10);
 p.setAchievements(achievment);
 end;
 
