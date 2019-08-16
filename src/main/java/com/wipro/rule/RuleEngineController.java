@@ -38,7 +38,7 @@ public class RuleEngineController {
 	
 	@RequestMapping(value = "/checkrule", method = RequestMethod.GET)
 	//@Scheduled(cron = "0 0 12 * * ?")
-        @Scheduled(cron = "0 */10 * * * ?")
+      //  @Scheduled(cron = "0 */10 * * * ?")
 	public List<Team> ruleCheck() throws IOException {
 		//session.startProcess("com.wipro.rule.DroolConfig");
 		System.out.println("Hello started");
